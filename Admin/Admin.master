@@ -1,0 +1,253 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Admin.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+  
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .headtable {
+            font-size: x-large;
+            text-align: center;
+            padding: 20px 0px 20px 0px;
+            background-color: #1B2847;
+            color: #ffffff;
+        }
+
+        .main-container {
+            max-width: 960px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .header-title {
+            font-size: 26px;
+            color: #ffffff;
+            margin-right: auto;
+            margin-left: auto;
+            text-align: center;
+            padding-top: 12px;
+            padding-bottom: 12px;
+        }
+
+
+        .bg-color-main {
+            background-color: #071558;
+        }
+
+        .header-group-button {
+            float: right;
+            margin-top: -36px;
+        }
+
+        .footer-title {
+            color: #ffffff;
+        }
+
+        .footer {
+            padding-bottom: 15px;
+            padding-top: 15px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .menu {
+            float: left;
+            background-color: #eee;
+            padding-left: 10px;
+            padding-right: 10px;
+            min-height:462px;
+        }
+
+        .main {
+            display: block;
+            background-color: #eee;
+            margin-left: 200px;
+            padding: 10px 10px 0px 10px;
+             min-height:462px;
+        }
+
+        .main-lable {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .main-row {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .textcenter{
+            margin-left:auto;
+            margin-right:auto;
+           
+        }
+    </style>
+
+    <link href="CSS/Bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <div class="header">
+                <div class="bg-color-main">
+                    <div>
+                        <p class="header-title">ADMIN PAGE MANAGER</p>
+                    </div>
+                    <div class="header-group-button">
+
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Trang Chủ" />
+
+                        <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log Out" />
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+            <div class="menu">
+                <asp:TreeView ID="TreeView1" runat="server" ImageSet="Simple" ShowLines="True">
+                    <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                    <Nodes>
+                        <asp:TreeNode Text="Đơn đặt hàng" Value="Món ăn" NavigateUrl="~/Admin/DonHangChuaXuLi.aspx">
+                            <asp:TreeNode NavigateUrl="~/Admin/DonHangChuaXuLi.aspx" Text="Chưa xử lí" Value="New Node"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/DonHangDaXiLi.aspx" Text="Đã xử lí" Value="Đã xử lí"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/CapNhatDonDatHang.aspx" Text="CNhật đơn ĐH" Value="Cập nhật đơn đặt hàng"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/CapNhatChiTietDonHang.aspx" Text="CNhật CTiết đơn ĐH" Value="Cập nhật chi tiết đơn đặt hàng"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Text="Món ăn" Value="Món ăn">
+                            <asp:TreeNode NavigateUrl="~/Admin/ThemMonAn.aspx" Text="Thêm" Value="Thêm"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/CapNhatMonAn.aspx" Text="Cập nhật" Value="Cập nhật"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Text="Loại món ăn" Value="" NavigateUrl="~/Admin/CapNhatLoaiMonAn.aspx">
+                            <asp:TreeNode NavigateUrl="~/Admin/ThemLoaiMonAn.aspx" Text="Thêm" Value="Thêm"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/CapNhatLoaiMonAn.aspx" Text="Cập nhật" Value="Cập nhật"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Text="Nhà hàng" Value="Nhà hàng" NavigateUrl="~/Admin/CapNhatNhaHang.aspx">
+                            <asp:TreeNode NavigateUrl="~/Admin/ThemNhaHang.aspx" Text="Thêm" Value="Thêm"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/CapNhatNhaHang.aspx" Text="Cập nhật" Value="Cập nhật"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/NhaHangThemDiaChi.aspx" Text="Thêm địa điểm" Value="Thêm địa điểm"></asp:TreeNode>
+                            <asp:TreeNode NavigateUrl="~/Admin/CapNhatDiaDiemNhaHang.aspx" Text="Quản lí địa điểm" Value="Cập nhật địa điểm"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Text="Khu vực" Value="" NavigateUrl="~/Admin/KhuVuc.aspx"></asp:TreeNode>
+                        <asp:TreeNode Text="Thành phố" Value="" NavigateUrl="~/Admin/ThanhPho.aspx"></asp:TreeNode>
+                        <asp:TreeNode Text="Khách hàng" Value="" NavigateUrl="~/Admin/KhachHang.aspx">
+                        </asp:TreeNode>
+                        <asp:TreeNode Text="Quảng cáo" Value="">
+                            <asp:TreeNode Text="Thêm mới" Value="Thêm mới" NavigateUrl="~/Admin/ThemQuangCao.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Cập nhật" Value="Cập nhật" NavigateUrl="~/Admin/CapNhatQuangCao.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                        <asp:TreeNode Text="Admin" Value="Món ăn">
+                            <asp:TreeNode Text="Thêm tài khoản" Value="Thêm tài khoản" NavigateUrl="~/Admin/ThemTaiKhoanAdmin.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Đổi mật khẩu" Value="đổi mật khẩu" NavigateUrl="~/Admin/DoiMatKhau.aspx"></asp:TreeNode>
+                            <asp:TreeNode Text="Danh sách tài khoản" Value="Danh sách tài khoản" NavigateUrl="~/Admin/DanhSachTaiKhoanAdmin.aspx"></asp:TreeNode>
+                        </asp:TreeNode>
+                    </Nodes>
+                    <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="0px" NodeSpacing="0px" VerticalPadding="0px" />
+                    <ParentNodeStyle Font-Bold="False" />
+                    <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
+                </asp:TreeView>
+            </div>
+            <div class="main">
+                <div class="container">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+            <div class="footer bg-color-main">
+                <asp:Label ID="Label1" runat="server" CssClass="footer-title" Text="www.datmononline.com"></asp:Label>
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <%--<div class="main-container">
+            <table>
+                <tr>
+                    <td colspan="2"><strong style="color">ADMIN PAGE MANAGER</strong></td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Trang Chủ" />
+                   
+                    <asp:Button ID="btnLogout" runat="server" OnClick="btnLogout_Click" Text="Log Out" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <asp:TreeView ID="TreeView1" runat="server" ImageSet="Simple">
+                            <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                            <Nodes>
+                                <asp:TreeNode Text="Đơn đặt hàng" Value="Món ăn">
+                                    <asp:TreeNode Text="Xem" Value="Xem"></asp:TreeNode>
+                                    <asp:TreeNode Text="Thêm mới" Value="Thêm mới"></asp:TreeNode>
+                                    <asp:TreeNode Text="Cập nhật" Value="Cập nhật"></asp:TreeNode>
+                                </asp:TreeNode>
+                                <asp:TreeNode Text="Món ăn" Value="Món ăn" NavigateUrl="~/Admin/MonAn.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="Loại món ăn" Value="" NavigateUrl="~/Admin/LoaiMonAn.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="Nhà hàng" Value="Nhà hàng" NavigateUrl="~/Admin/QLNhaHang.aspx"></asp:TreeNode>
+                                <asp:TreeNode Text="Khu vực" Value="">
+                                    <asp:TreeNode Text="Thêm mới" Value="Thêm mới"></asp:TreeNode>
+                                    <asp:TreeNode Text="Cập nhật" Value="Cập nhật"></asp:TreeNode>
+                                </asp:TreeNode>
+                                <asp:TreeNode Text="Thành phố" Value="">
+                                    <asp:TreeNode Text="Thêm mới" Value="Thêm mới"></asp:TreeNode>
+                                    <asp:TreeNode Text="Cập nhật" Value="Cập nhật"></asp:TreeNode>
+                                </asp:TreeNode>
+                                <asp:TreeNode Text="Khách hàng" Value="">
+                                    <asp:TreeNode Text="Thêm mới" Value="Thêm mới"></asp:TreeNode>
+                                    <asp:TreeNode Text="Cập nhật" Value="Cập nhật"></asp:TreeNode>
+                                </asp:TreeNode>
+                                <asp:TreeNode Text="Quảng cáo" Value="">
+                                    <asp:TreeNode Text="Thêm mới" Value="Thêm mới" NavigateUrl="~/Admin/QLQuangCao.aspx"></asp:TreeNode>
+                                    <asp:TreeNode Text="Cập nhật" Value="Cập nhật" NavigateUrl="~/Admin/CNQuangCao.aspx"></asp:TreeNode>
+                                </asp:TreeNode>
+                                <asp:TreeNode Text="Admin" Value="Món ăn">
+                                    <asp:TreeNode Text="Thêm tài khoản" Value="Thêm tài khoản"></asp:TreeNode>
+                                    <asp:TreeNode Text="Đổi mật khẩu" Value="đổi mật khẩu"></asp:TreeNode>
+                                </asp:TreeNode>
+                            </Nodes>
+                            <NodeStyle Font-Names="Tahoma" Font-Size="10pt" ForeColor="Black" HorizontalPadding="0px" NodeSpacing="0px" VerticalPadding="0px" />
+                            <ParentNodeStyle Font-Bold="False" />
+                            <SelectedNodeStyle Font-Underline="True" ForeColor="#5555DD" HorizontalPadding="0px" VerticalPadding="0px" />
+                        </asp:TreeView>
+                    </td>
+                    <td>
+                        <div class="container">
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
+                            </asp:ContentPlaceHolder>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <asp:Label ID="Label1" runat="server" Text="www.datmononline.com"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>--%>
+    </form>
+</body>
+</html>
