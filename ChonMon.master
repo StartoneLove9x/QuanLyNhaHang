@@ -1,0 +1,200 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true" CodeFile="ChonMon.master.cs" Inherits="ChonMon" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="Server">
+    <title>Chọn món</title>
+    <style>
+        .lable-main {
+            height: 45px;
+            padding: 12px 10px 10px 10px;
+            width: 95%;
+            margin-right: auto;
+            color: #ffffff;
+            background: #FAA61A;
+            font-size: 23px;
+            text-align: center;}
+        .danhmuc{
+            margin-top:25px;
+            margin-bottom:-11px;
+
+        }
+    </style>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
+
+    <div class="container">
+        <div class="row">
+            <asp:SqlDataSource ID="SqlDataSourceNhaHang" runat="server" ConnectionString="<%$ ConnectionStrings:DBConnectionString %>" SelectCommand="SELECT NHAHANG.MANH, NHAHANG.TENNH, NHAHANG.DIENTHOAI, NHAHANG.EMAIL, NHAHANG.THOIGIANPHUCVU, NHAHANG.THOIGIANGIAOHANG, NHAHANG.URLHINHANH, CHITIETNHAHANG.MAKV, CHITIETNHAHANG.DIACHI FROM CHITIETNHAHANG INNER JOIN NHAHANG ON CHITIETNHAHANG.MANH = NHAHANG.MANH WHERE (NHAHANG.MANH = @MANH) AND (CHITIETNHAHANG.MAKV = @MAKV)">
+                <SelectParameters>
+                    <asp:QueryStringParameter Name="MANH" QueryStringField="rq_MANH" />
+                </SelectParameters>
+                <SelectParameters>
+                    <asp:QueryStringParameter Name="MAKV" QueryStringField="rq_MAKV" />
+                </SelectParameters>
+            </asp:SqlDataSource>
+            <asp:DataList ID="DataListNhaHang" runat="server" DataSourceID="SqlDataSourceNhaHang" Width="844px">
+                <ItemTemplate>
+
+                    <div class="row">
+                        <div class="list-restaurants">
+                            <div class="item" style="margin-bottom: 10px;">
+                                <span class="icon-status-res "></span>
+                                <div class="row item-header" style="margin-left: 0px; margin-right: 0px;">
+                                    <div class="col-reset col-md-8">
+                                        <h2 class="red" style="font-size: x-large;">
+                                            <asp:Label ID="Label1" runat="server" CssClass="red" Text='<%# Eval("TENNH") %>'></asp:Label>
+                                        </h2>
+                                        <asp:Label ID="Label2" runat="server" Text='<%# Eval("DIACHI") %>'></asp:Label>
+                                    </div>
+                                    <div class="col-reset col-md-4 text-right">
+                                    </div>
+                                </div>
+                                <div class="row item-body">
+                                    <div class="col-md-2 thumb" style="margin-left: 10px; margin-bottom: -3px;">
+                                        <asp:Image ID="ImageNhaHang1" runat="server" ImageUrl='<%# Eval("URLHINHANH") %>' />
+                                    </div>
+                                    <div class="col-md-6 quick-info col-reset">
+                                        <ul>
+                                            <li><i class="icon-res time"></i>Thời gian giao hàng: <strong>
+                                                <asp:Label ID="Label4" runat="server" Text='<%# Eval("THOIGIANPHUCVU") %>'></asp:Label>
+                                            </strong></li>
+                                            <!--li><i class="icon-res free"></i> <strong>Giao món miễn phí</strong></li-->
+                                            <li><i class="icon-res limit"></i>Giao hàng khoảng :<strong>
+                                                <asp:Label ID="Label3" runat="server" Text='<%# Eval("THOIGIANGIAOHANG") %>'></asp:Label></strong></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-4 text-right" style="margin-right: 45px;">
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </ItemTemplate>
+            </asp:DataList>
+
+
+        </div>
+        <%--    Ket thuc row 1--%>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row two-col">
+
+
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+
+
+
+
+
+
+
+            <%--<asp:DataList ID="DataList1" runat="server" DataSourceID="SqlDataSourceNhaHang" RepeatColumns="1">
+                <ItemTemplate>
+                   
+
+
+
+            <div class="col-reset col-md-4 right">
+                <div class="box-right cart" style="margin-top: 0px;">
+                    <h3 class="title">Đơn hàng của bạn</h3>
+                    <div class="info">
+                        <asp:Image ID="NhaHang2" runat="server"  style="max-width: 75px;" />
+                       
+                        <h4 class="title red">Madake Hà Nội</h4>
+                        <!--p>Nhà hàng món chay</p-->
+                    </div>
+                    <div class="bottom">
+                        <div id="session_order">
+                            <div class="menu_more_util" style="display: none;">
+                                <a href="javascript:void(0)">&nbsp;</a>
+                                <ul class="menu_more_list">
+                                    <li id="btn_order_food_collapse_list"><a onclick="order_food.collapse_list(); return false;" href="javascript:void(0)">Thu gọn danh sách</a></li>
+                                    <li id="btn_order_food_clear_list"><a onclick="order_food.clear_list(); return false;" href="javascript:void(0)">Xóa danh sách</a></li>
+                                </ul>
+                            </div>
+                            <div id="food_menu_title">Các món ăn bạn đã đặt</div>
+                            <div id="no_order_block"><b>Bạn chưa chọn món ăn</b></div>
+                            <div id="order_block" style="display: none;"></div>
+                            <div id="order_summary" style="display: none;">
+                                <div id="food_menu_item">
+                                    <div id="food_menu_number">Số món đã đặt</div>
+                                    <div id="food_menu_price"><span id="order_food_quantity">0</span></div>
+                                    <div id="clear">
+                                        <img src="images/spacer.gif" height="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="order_min">
+                                <div id="food_menu_item">
+                                    <div id="food_menu_number">Đơn hàng tối thiểu còn</div>
+                                    <div id="food_menu_price"><span id="order_min_content">70.000</span>đ</div>
+                                    <div id="clear">
+                                        <img src="images/spacer.gif" height="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="order_fee">
+                                <div id="food_menu_item">
+                                    <div id="food_menu_number">Phí vận chuyển</div>
+                                    <div id="food_menu_price">20.000đ</div>
+                                    <div id="clear">
+                                        <img src="images/spacer.gif" height="1">
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="food_menu_total" style="display: none;">
+                                <div id="food_menu_label">Tổng số tiền</div>
+                                <div id="food_total"><span id="food_total_content">20.000</span>đ</div>
+                            </div>
+                            <br>
+                            <div style="text-align: center; display: none;" id="payBtn">
+                                <div class="cart-action clearfix">
+                                    <span class="button btn-payment" onclick="order_food.check_payment(); return false;">
+                                        <span>Thanh toán</span>
+                                    </span>
+                                    <span class="button btn-clear-cart" onclick="order_food.clear_list(); return false;">Xóa giỏ hàng
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--div class="text-right">
+                <img src="images/banners/banner2.jpg" />
+            </div-->
+            </div>
+                </ItemTemplate>
+            </asp:DataList>--%>
+        </div>
+    </div>
+
+</asp:Content>
+

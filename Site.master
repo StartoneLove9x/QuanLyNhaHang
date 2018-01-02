@@ -1,0 +1,152 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+  
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <link href="~/Content/sign_in.css?v=5.433" rel="stylesheet" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,vietnamese' rel='stylesheet' type='text/css'>
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="Content/_block.css" rel="stylesheet" />
+    <link href="Content/detail.css" rel="stylesheet" />
+    <link href="Content/font-face.css" rel="stylesheet" />
+    <link href="Content/food-detail.css" rel="stylesheet" />
+    <link href="Content/jquery-ui-1.9.2.custom.css" rel="stylesheet" />
+    <link href="Content/jquery.ui.core.css" rel="stylesheet" />
+    <link href="Content/jquery.ui.datepicker.css" rel="stylesheet" />
+    <link href="Content/main.css" rel="stylesheet" />
+    <link href="Content/reset.min.css" rel="stylesheet" />
+    <link href="Content/sign_in.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/style_cart.css" rel="stylesheet" />
+    <link href="Content/tooltip.css" rel="stylesheet" />
+
+
+
+    <%-- <!--google map-->
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/chonmon_block.js"></script>
+    <script src="Scripts/header.js"></script>
+    <script src="Scripts/jquery-1.8.2.intellisense.js"></script>
+    <script src="Scripts/jquery-1.8.2.js"></script>
+    <script src="Scripts/jquery-1.8.2.min.js"></script>
+    <script src="Scripts/jquery-1.8.3.min.js"></script>
+    <script src="Scripts/jquery-ui-1.8.24.js"></script>
+    <script src="Scripts/jquery-ui-1.8.24.min.js"></script>
+    <script src="Scripts/jstorage.js"></script>
+    <script src="Scripts/library.js"></script>
+    <script src="Scripts/main.js"></script>
+    <script src="Scripts/modernizr-2.6.2.js"></script>--%>
+</head>
+<body>
+    <form runat="server">
+        <header class="header" style="background: #b11116; padding: 8px 0px; border-bottom: solid 3px #9d0a0e; font-family: 'UVF-Funkydori'; color: #fff; font-size: 18px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="TrangChu.aspx">
+                            <img src="Images/logo.png" /></a>
+                    </div>
+                    <div class="col-md-7">
+                        <div class="header-right">
+                            <div class="col-md-7">
+                                <div class="row">
+                                    <div class="nav-user clearfix">
+                                        <img src="Images/icons/icon-phone.png" class="icon-header inline-block" />
+                                        <div class="inline-block">
+                                            08. 7308 3939 (7h – 23h)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="row">
+                                    <div class="nav-user clearfix">
+                                        <img src="Images/icons/icon-user.png" class="icon-header inline-block" />
+                                        <div class="inline-block">
+                                            <asp:HyperLink ID="hlDangNhap" runat="server" CssClass="model-register" NavigateUrl="~/DangNhap.aspx">Đăng nhập /</asp:HyperLink>
+                                            &nbsp;<asp:HyperLink ID="hlDangKi" runat="server" CssClass="model-register" NavigateUrl="~/DangKi.aspx">Đăng kí</asp:HyperLink>
+                                            <asp:HyperLink ID="hlUser" runat="server" CssClass="model-register" NavigateUrl="~/DangNhap.aspx">[hlUser]</asp:HyperLink>
+                                            
+
+                                        &nbsp;&nbsp;
+                                           
+                                            <asp:ImageButton ID="cmdLogout" runat="server" CssClass="icon-header inline-block" ImageUrl="~/Images/logout.png" OnClick="ImageButton1_Click" Visible="False" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </header>
+
+        <div style="min-height:522px">
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        </div>
+
+        <footer class="footer" style="background: #b11116; padding: 8px 0px; border-bottom: solid 3px #9d0a0e; font-family: 'UVF-Funkydori'; color: #fff; font-size: 18px;">
+            <div class="container">
+                <div class="row text-center">
+                    <ul class="menu-footer" style="margin-bottom:-15px;font-size:15px">
+                        <li>
+                            <a href="Admin/Admin.aspx">
+                                <i class="icon icon-about"></i>
+                               <div class="inline-block" style="color:#fff;font-family:Arial">
+                                            Trang Admin
+                                        </div>
+                              
+                            </a></li>
+                        <li>
+                            <a href="TrangChu.aspx">
+                                <i class="icon icon-contact"></i>
+                                 <div class="inline-block" style="color:#fff;font-family:Arial">
+                                            Liên hệ
+                                        </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="TrangChu.aspx">
+                                <i class="icon icon-support"></i>
+                                  <div class="inline-block" style="color:#fff;font-family:Arial">
+                                            Hỗ trợ
+                                        </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="TrangChu.aspx">
+                                <i class="icon icon-cooperation"></i>
+                                 <div class="inline-block" style="color:#fff;font-family:Arial">
+                                            Hợp tác
+                                        </div>
+                            </a>
+                        </li>
+                        <li><a href="TrangChu.aspx">
+
+                            <i class="icon icon-blog"></i>
+                              <div class="inline-block" style="color:#fff;font-family:Arial">
+                                            Blog
+                                        </div>
+                        </a>
+                        </li>
+                       
+                    </ul>
+                </div>
+               
+            </div>
+        </footer>
+
+    </form>
+
+</body>
+</html>
